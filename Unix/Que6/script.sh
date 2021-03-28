@@ -16,4 +16,4 @@ awk 'BEGIN {FS=";";IGNORECASE=1;}
         }
     }
 }
-'|sort
+'$1 |sort -k1
