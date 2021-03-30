@@ -1,0 +1,61 @@
+#class Functions
+class City:
+    def __init__(self,city_id,state_name,city_name,no_of_tests,no_of_positive):
+        self.city_id=city_id
+        self.state_name=state_name
+        self.city_name=city_name
+        self.no_of_tests=no_of_tests
+        self.no_of_positive=no_of_positive
+
+class PandemicAnalysis:
+    def __init__(self,analysis_name,city_list):
+        self.analysis_name = analysis_name
+        self.city_list = city_list
+    
+    def get_StateWithMaxPositiveCases(self):
+        #function body
+        max_state = {}
+        for city in self.city_list:
+            if city.state_name not in max_state.keys():
+                max_state[city.state_name]=city.no_of_positive
+            else:
+                max_state[city.state_name] = max_state[city.state_name]+no_of_positive
+        x=sorted(max_state)
+        return x[-1]
+    
+    def get_CitiesMoreThanPercentage(self,req_percent):
+        #function body
+        req = []
+        for city in self.city_list:
+            calc_percent = (city.no_of_positive*100)/city.no_of_tests
+            if calc_percent >= req_percent:
+                req.append(city)
+        return req
+
+#main program
+if __name__=='__name__':
+    count=int(input())
+    cities=[]
+    for i in range(count):
+        city_id = int(input())
+        state_name=input()
+        city_name=input()
+        no_of_tests=int(input())
+        no_of_positive=int(input())
+        cities.append(City(city_id,state_name,city_name,no_of_tests,no_of_positive))
+    
+    pand = PandemicAnalysis("ABC",cities)
+    req_percent = int(input())
+    
+    max_state = pand.get_StateWithMaxPositiveCases()
+    print(max_state)
+    
+    cities_percent = pand.get_CitiesMoreThanPercentage(req_percent)
+    if len(cities_percent) > 0:
+        for obj in cities_percent:
+            print(obj.state_name,obj.city_name,sep=" ")
+    else:
+        print("no city")
+    
+    
+        
