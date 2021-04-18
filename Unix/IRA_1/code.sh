@@ -1,11 +1,12 @@
-awk 'BEGIN {FS=",";}
+read c
+awk '{FS=","}
 {
-	if(max<$3){
+	if($3>max){
 		max=$3;
-		id=$1;
 		name=$2;
+		id=$1;
 	}
 }END{
-	print id," ",name;
+	print id,name;
 }
-'|sort
+'
