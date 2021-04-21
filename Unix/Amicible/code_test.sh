@@ -15,12 +15,15 @@ function findAmicableNo(a, b)
     else
         print "The pair is not amicable"
 }
-function findDivisors(c){
-    sum=0
-    for(i=2;i<=c;i++){
-        if(c%i==0){
-            sum=sum+i;
-        }
-    }
-    return sum;
+function findDivisors(n)
+{
+    sum = 1
+    sqrtNo = sqrt(n)
+    for (i = 2; i <= sqrtNo; i++)
+        if (n % i == 0 )
+            if (i == n % i)
+                sum += i
+            else
+                sum += i+n/i
+    return sum
 }'
